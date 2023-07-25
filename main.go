@@ -1,13 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	sumCharCods("gustavo")
 }
 
-//Testando o big O(custo computacional de uma função)
-func sumCharCods(n string) int {
+// Testando o big O(custo computacional de uma função)
+func SumCharCods(n string) int {
 	nRune := []rune(n)
 	var sum int
 	for i := 0; i < len(n); i++ {
