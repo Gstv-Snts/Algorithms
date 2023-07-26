@@ -4,21 +4,23 @@ import (
 	search "Algorithms/Search"
 	"fmt"
 	"log"
-	"math/rand"
 )
 
 func main() {
-	for i := 0; i < 1000; i++ {
-		ns := []int{1, 3, 4, 5, 6, 7, 8, 9, 12, 13, 16, 17, 19, 24, 26, 28}
-		i := rand.Intn(len(ns) - 1)
-		got := search.BinarySearch(ns, ns[i])
-		want := i
-
-		if got != want {
-			log.Fatalf("got %v, wanted %v\n", got, want)
-		}
-		fmt.Printf("got %v, wanted %v\n", got, want)
+	ns := []bool{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true}
+	got := search.CrystalBallBreakSqrt(ns)
+	want := 15
+	if got != want {
+		log.Fatalf("got %v, wanted %v\n", got, want)
 	}
+	fmt.Print("Sqrt approach: ")
+	fmt.Printf("got %v, wanted %v\n", got, want)
+	got = search.CrystalBallBreakBinary(ns)
+	if got != want {
+		log.Fatalf("got %v, wanted %v\n", got, want)
+	}
+	fmt.Print("Binary approach: ")
+	fmt.Printf("got %v, wanted %v\n", got, want)
 }
 
 // Testando o big O(custo computacional de uma função)

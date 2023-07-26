@@ -26,3 +26,20 @@ func TestBinarySearch(t *testing.T) {
 		t.Errorf("got %v, wanted %v", got, want)
 	}
 }
+
+func TestCrystalBallsSqrtAndBinary(t *testing.T) {
+	ns := []bool{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true}
+	got := search.CrystalBallBreakSqrt(ns)
+	want := 15
+	if got != want {
+		t.Errorf("got %v, wanted %v\n", got, want)
+	}
+	fmt.Print("Sqrt approach: ")
+	fmt.Printf("got %v, wanted %v\n", got, want)
+	got = search.CrystalBallBreakBinary(ns)
+	if got != want {
+		t.Errorf("got %v, wanted %v\n", got, want)
+	}
+	fmt.Print("Binary approach: ")
+	fmt.Printf("got %v, wanted %v\n", got, want)
+}
