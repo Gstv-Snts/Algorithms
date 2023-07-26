@@ -17,13 +17,8 @@ func TestLinearSearch(t *testing.T) {
 }
 
 func TestBinarySearch(t *testing.T) {
-	var ns []int
-	var cn int
-	for cn < 1000 {
-		cn = rand.Intn(3) + cn
-		ns = append(ns, cn)
-	}
-	i := rand.Intn(100)
+	ns := []int{1, 3, 4, 5, 6, 7, 8, 9, 12, 13, 16, 17, 19, 24, 26, 28}
+	i := rand.Intn(len(ns) - 1)
 	fmt.Println(i)
 	got := search.BinarySearch(ns, ns[i])
 	want := i
