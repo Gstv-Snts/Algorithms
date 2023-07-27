@@ -7,13 +7,14 @@ import (
 )
 
 func main() {
-	var linkedList *sorting.SinglyLinkedList = new(sorting.SinglyLinkedList)
+	var doublyLinkedList *sorting.DoublyLinkedList = new(sorting.DoublyLinkedList)
 	for i := 0; i < 10; i++ {
-		linkedList.Append(rand.Intn(100))
+		doublyLinkedList.Append(rand.Intn(100))
 	}
-	linkedList.ShowNodes()
-	linkedList.Delete(4)
-	linkedList.ShowNodes()
+	doublyLinkedList.Append(33)
+	doublyLinkedList.Append(55)
+	doublyLinkedList.ShowNodes()
+	fmt.Println(doublyLinkedList.Search(33))
 }
 
 // Testando o big O(custo computacional de uma função)

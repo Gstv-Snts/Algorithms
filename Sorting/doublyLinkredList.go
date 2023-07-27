@@ -2,34 +2,37 @@ package sorting
 
 import "fmt"
 
-type SinglyNode struct {
-	Next  *SinglyNode
+type DoublyNode struct {
+	Next  *DoublyNode
+	Prev  *DoublyNode
 	Value int
 }
 
-type SinglyLinkedList struct {
-	Head   *SinglyNode
-	Tail   *SinglyNode
+type DoublyLinkedList struct {
+	Head   *DoublyNode
+	Tail   *DoublyNode
 	Length int
 }
 
-func (l *SinglyLinkedList) Append(v int) {
-	newNode := &SinglyNode{nil, v}
+func (l *DoublyLinkedList) Append(v int) {
+	newNode := &DoublyNode{nil, nil, v}
 	if l.Length == 0 {
 		l.Head = newNode
 	} else {
 		l.Tail.Next = newNode
 	}
+	newNode.Prev = l.Tail
 	l.Tail = newNode
 	l.Length += 1
 }
 
-func (l *SinglyLinkedList) Prepend(v int) {
-	newNode := &SinglyNode{l.Head, v}
+func (l *DoublyLinkedList) Prepend(v int) {
+	newNode := &DoublyNode{l.Head, nil, v}
+	l.Head.Prev = newNode
 	l.Head = newNode
 }
 
-func (l *SinglyLinkedList) ShowNodes() {
+func (l *DoublyLinkedList) ShowNodes() {
 	cn := l.Head
 	fmt.Println(l.Head)
 	for cn.Next != nil {
@@ -38,7 +41,7 @@ func (l *SinglyLinkedList) ShowNodes() {
 	}
 }
 
-func (l *SinglyLinkedList) LookUp(index int) int {
+func (l *DoublyLinkedList) LookUp(index int) int {
 	n := l.Head
 	for i := 0; i < index; i++ {
 		n = n.Next
@@ -46,7 +49,7 @@ func (l *SinglyLinkedList) LookUp(index int) int {
 	return n.Value
 }
 
-func (l *SinglyLinkedList) Search(v int) int {
+func (l *DoublyLinkedList) Search(v int) int {
 	n := l.Head
 	i := 0
 	for n.Value != v && n.Next != nil {
@@ -58,7 +61,8 @@ func (l *SinglyLinkedList) Search(v int) int {
 	}
 	return -1
 }
-func (l *SinglyLinkedList) Insert(index int, newNode *SinglyNode) {
+
+func (l *DoublyLinkedList) Insert(index int, newNode *DoublyNode) {
 	n := l.Head
 	for i := 0; i < index-1; i++ {
 		n = n.Next
@@ -68,7 +72,7 @@ func (l *SinglyLinkedList) Insert(index int, newNode *SinglyNode) {
 	n.Next = newNode
 }
 
-func (l *SinglyLinkedList) Delete(index int) {
+func (l *DoublyLinkedList) Delete(index int) {
 	n := l.Head
 	for i := 0; i < index-1; i++ {
 		n = n.Next
