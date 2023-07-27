@@ -27,6 +27,7 @@ func (l *SinglyLinkedList) Append(v int) {
 func (l *SinglyLinkedList) Prepend(v int) {
 	newNode := &SinglyNode{l.Head, v}
 	l.Head = newNode
+	l.Length += 1
 }
 
 func (l *SinglyLinkedList) ShowNodes() {
@@ -58,12 +59,12 @@ func (l *SinglyLinkedList) Search(v int) int {
 	}
 	return -1
 }
-func (l *SinglyLinkedList) Insert(index int, newNode *SinglyNode) {
+func (l *SinglyLinkedList) Insert(index int, v int) {
 	n := l.Head
 	for i := 0; i < index-1; i++ {
 		n = n.Next
-		fmt.Println(i)
 	}
+	newNode := &SinglyNode{nil, v}
 	newNode.Next = n.Next
 	n.Next = newNode
 }

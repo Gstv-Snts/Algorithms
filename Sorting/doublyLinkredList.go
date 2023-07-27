@@ -30,6 +30,7 @@ func (l *DoublyLinkedList) Prepend(v int) {
 	newNode := &DoublyNode{l.Head, nil, v}
 	l.Head.Prev = newNode
 	l.Head = newNode
+	l.Length += 1
 }
 
 func (l *DoublyLinkedList) ShowNodes() {
@@ -62,13 +63,15 @@ func (l *DoublyLinkedList) Search(v int) int {
 	return -1
 }
 
-func (l *DoublyLinkedList) Insert(index int, newNode *DoublyNode) {
+func (l *DoublyLinkedList) Insert(index int, v int) {
 	n := l.Head
 	for i := 0; i < index-1; i++ {
 		n = n.Next
 		fmt.Println(i)
 	}
+	newNode := &DoublyNode{nil, nil, v}
 	newNode.Next = n.Next
+	newNode.Prev = n
 	n.Next = newNode
 }
 
@@ -78,6 +81,7 @@ func (l *DoublyLinkedList) Delete(index int) {
 		n = n.Next
 	}
 	dn := n.Next
+	n.Next.Prev = n
 	n.Next = n.Next.Next
 	dn.Next = nil
 }
