@@ -1,26 +1,19 @@
 package main
 
 import (
-	search "Algorithms/Search"
+	sorting "Algorithms/Sorting"
 	"fmt"
-	"log"
+	"math/rand"
 )
 
 func main() {
-	ns := []bool{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true}
-	got := search.CrystalBallBreakSqrt(ns)
-	want := 15
-	if got != want {
-		log.Fatalf("got %v, wanted %v\n", got, want)
+	var linkedList *sorting.SinglyLinkedList = new(sorting.SinglyLinkedList)
+	for i := 0; i < 10; i++ {
+		linkedList.Append(rand.Intn(100))
 	}
-	fmt.Print("Sqrt approach: ")
-	fmt.Printf("got %v, wanted %v\n", got, want)
-	got = search.CrystalBallBreakBinary(ns)
-	if got != want {
-		log.Fatalf("got %v, wanted %v\n", got, want)
-	}
-	fmt.Print("Binary approach: ")
-	fmt.Printf("got %v, wanted %v\n", got, want)
+	linkedList.ShowNodes()
+	linkedList.Delete(4)
+	linkedList.ShowNodes()
 }
 
 // Testando o big O(custo computacional de uma função)
