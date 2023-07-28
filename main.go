@@ -7,11 +7,15 @@ import (
 )
 
 func main() {
-	var circlularLinkedList *sorting.CirclularLinkedList = new(sorting.CirclularLinkedList)
-	for i := 0; i < 10; i++ {
-		circlularLinkedList.Append(rand.Intn(100))
+	list := new(sorting.CirclularDoublyLinkedList)
+	for i := 0; i < 8; i++ {
+		list.Append(rand.Intn(100))
 	}
-	circlularLinkedList.ShowNodes()
+	list.ShowNodes()
+	list.Prepend(10)
+	fmt.Println("qwqwqwqwqwqw")
+	fmt.Println(list.LookUp(4))
+	fmt.Println(list.Length)
 }
 
 // Testando o big O(custo computacional de uma função)
