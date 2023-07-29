@@ -7,12 +7,16 @@ import (
 )
 
 func main() {
-	queue := new(sorting.Queue)
+	stack := new(sorting.Stack)
 	for i := 0; i < 10; i++ {
-		queue.Enqueue(rand.Intn(100))
+		stack.Push(rand.Intn(100))
+		fmt.Println(stack.Peek())
 	}
-	queue.ShowQueue()
-	queue.Peek()
+	for i := 0; i < stack.Length; i++ {
+		fmt.Println(stack.Peek())
+		stack.Pop()
+	}
+
 }
 
 // Testando o big O(custo computacional de uma função)
