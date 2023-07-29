@@ -7,15 +7,12 @@ import (
 )
 
 func main() {
-	list := new(sorting.CirclularDoublyLinkedList)
-	for i := 0; i < 8; i++ {
-		list.Append(rand.Intn(100))
+	queue := new(sorting.Queue)
+	for i := 0; i < 10; i++ {
+		queue.Enqueue(rand.Intn(100))
 	}
-	list.ShowNodes()
-	list.Prepend(10)
-	fmt.Println("qwqwqwqwqwqw")
-	fmt.Println(list.LookUp(4))
-	fmt.Println(list.Length)
+	queue.ShowQueue()
+	queue.Peek()
 }
 
 // Testando o big O(custo computacional de uma função)
