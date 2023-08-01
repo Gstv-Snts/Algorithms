@@ -1,21 +1,10 @@
 package main
 
 import (
-	sorting "Algorithms/Sorting"
 	"fmt"
-	"math/rand"
 )
 
 func main() {
-	stack := new(sorting.Stack)
-	for i := 0; i < 10; i++ {
-		stack.Push(rand.Intn(100))
-		fmt.Println(stack.Peek())
-	}
-	for i := 0; i < stack.Length; i++ {
-		fmt.Println(stack.Peek())
-		stack.Pop()
-	}
 
 }
 
