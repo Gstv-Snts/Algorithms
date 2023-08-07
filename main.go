@@ -1,11 +1,29 @@
 package main
 
 import (
+	trees "Algorithms/Trees"
 	"fmt"
 )
 
 func main() {
-
+	newTree := trees.Tree{
+		Root: &trees.Node{Value: 7,
+			Left: &trees.Node{Value: 23,
+				Left: &trees.Node{Value: 5,
+					Left:  nil,
+					Right: nil},
+				Right: &trees.Node{Value: 4,
+					Left:  nil,
+					Right: nil}},
+			Right: &trees.Node{Value: 3,
+				Left: &trees.Node{Value: 18,
+					Left:  nil,
+					Right: nil},
+				Right: &trees.Node{Value: 21,
+					Left:  nil,
+					Right: nil}},
+		}}
+	newTree.ShowNodes()
 }
 
 // Testando o big O(custo computacional de uma função)
