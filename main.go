@@ -6,24 +6,26 @@ import (
 )
 
 func main() {
-	newTree := trees.Tree{
-		Root: &trees.Node{Value: 7,
-			Left: &trees.Node{Value: 23,
-				Left: &trees.Node{Value: 5,
-					Left:  nil,
-					Right: nil},
-				Right: &trees.Node{Value: 4,
-					Left:  nil,
-					Right: nil}},
-			Right: &trees.Node{Value: 3,
-				Left: &trees.Node{Value: 18,
-					Left:  nil,
-					Right: nil},
-				Right: &trees.Node{Value: 21,
-					Left:  nil,
-					Right: nil}},
-		}}
-	newTree.ShowNodes()
+	newTree := &trees.NonBinaryTree{
+		Root: &trees.NonBynaryNode{Value: 1, Childs: []*trees.NonBynaryNode{
+			{Value: 2, Childs: []*trees.NonBynaryNode{
+				{Value: 5, Childs: []*trees.NonBynaryNode{
+					{Value: 9, Childs: nil},
+					{Value: 10, Childs: nil},
+				}},
+				{Value: 6, Childs: nil},
+			}},
+			{Value: 3, Childs: nil},
+			{Value: 4, Childs: []*trees.NonBynaryNode{
+				{Value: 7, Childs: []*trees.NonBynaryNode{
+					{Value: 11, Childs: nil},
+					{Value: 12, Childs: nil},
+				}},
+				{Value: 8, Childs: nil},
+			}},
+		}},
+	}
+	fmt.Println(newTree.BreathSearch(13))
 }
 
 // Testando o big O(custo computacional de uma função)
