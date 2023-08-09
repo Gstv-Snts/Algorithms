@@ -100,9 +100,26 @@ func recursiveFind(v int, queue *nonBynarytreeQueue) *NonBynaryNode {
 	return queue.Head
 }
 
-func (t *NonBinaryTree) BreathSearch(v int) *NonBynaryNode {
+func (t *NonBinaryTree) BreadthSearchRecursive(v int) *NonBynaryNode {
 	var queue nonBynarytreeQueue
 
 	queue.enqueue(t.Root)
 	return recursiveFind(v, &queue)
+}
+
+func (t *NonBinaryTree) BreadthSearch(v int) *NonBynaryNode {
+	var queue nonBynarytreeQueue
+	queue.enqueue(t.Root)
+	for queue.Length > 0 {
+		fmt.Println(queue.Head)
+		if queue.Head.Value == v {
+			return queue.Head
+		} else {
+			for _, v := range queue.Head.Childs {
+				queue.enqueue(v)
+			}
+			queue.pop()
+		}
+	}
+	return nil
 }

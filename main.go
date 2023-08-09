@@ -25,7 +25,7 @@ func main() {
 			}},
 		}},
 	}
-	fmt.Println(newTree.BreathSearch(13))
+	fmt.Println(newTree.BreathSearch(9))
 }
 
 // Testando o big O(custo computacional de uma função)
