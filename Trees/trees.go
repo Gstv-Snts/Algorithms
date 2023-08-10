@@ -123,3 +123,60 @@ func (t *NonBinaryTree) BreadthSearch(v int) *NonBynaryNode {
 	}
 	return nil
 }
+
+func walk(n1 *NonBynaryNode, n2 *NonBynaryNode) bool {
+	if n1.Value != n2.Value {
+		return false
+	}
+	for i := 0; i < len(n1.Childs); i++ {
+		if !walk(n1.Childs[i], n2.Childs[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+func CompareTrees(t1 *NonBinaryTree, t2 *NonBinaryTree) bool {
+	return walk(t1.Root, t2.Root)
+}
+
+func findRecursive(n *BinaryNode, v int) *BinaryNode {
+	if n == nil {
+		return nil
+	}
+	fmt.Println(n.Value)
+	if n.Value == v {
+		return n
+	}
+	leftRes := findRecursive(n.Left, v)
+	if leftRes != nil {
+		return leftRes
+	}
+	rightRes := findRecursive(n.Right, v)
+	if rightRes != nil {
+		return rightRes
+	}
+	return nil
+}
+
+func (t *Tree) DepthFirstFind(v int) *BinaryNode {
+	return findRecursive(t.Root, v)
+}
+
+func findRecursiveNonBy(n *NonBynaryNode, v int) *NonBynaryNode {
+	if n == nil {
+		return nil
+	}
+	if n.Value == v {
+		return n
+	}
+	var res *NonBynaryNode
+	for i := 0; i < len(n.Childs); i++ {
+		res = findRecursiveNonBy(n.Childs[i], v)
+	}
+	return res
+}
+
+func (t *NonBinaryTree) DepthFirstFind(v int) *NonBynaryNode {
+	return findRecursiveNonBy(t.Root, v)
+}
