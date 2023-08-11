@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	nonBinaryTree := &trees.NonBinaryTree{
+	/* nonBinaryTree := &trees.NonBinaryTree{
 		Root: &trees.NonBynaryNode{Value: 1, Childs: []*trees.NonBynaryNode{
 			{Value: 2, Childs: []*trees.NonBynaryNode{
 				{Value: 3, Childs: nil},
@@ -27,8 +27,8 @@ func main() {
 				{Value: 6, Childs: nil},
 				{Value: 8, Childs: nil},
 			}},
-		}}}
-	/* binaryTree := &trees.Tree{
+		}}} */
+	binaryTree := &trees.Tree{
 		Root: &trees.BinaryNode{Value: 1,
 			Left: &trees.BinaryNode{Value: 2,
 				Left:  &trees.BinaryNode{Value: 3, Left: nil, Right: nil},
@@ -38,8 +38,10 @@ func main() {
 				Left:  &trees.BinaryNode{Value: 6, Left: nil, Right: nil},
 				Right: &trees.BinaryNode{Value: 7, Left: nil, Right: nil},
 			}},
-	} */
-	fmt.Println(trees.CompareTrees(nonBinaryTree, nonBinaryTree2))
+	}
+	fmt.Println(binaryTree.Insert(4, 10))
+	fmt.Println(binaryTree.Insert(6, 12))
+	binaryTree.ShowNodes()
 }
 
 // Testando o big O(custo computacional de uma função)

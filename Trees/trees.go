@@ -180,3 +180,29 @@ func findRecursiveNonBy(n *NonBynaryNode, v int) *NonBynaryNode {
 func (t *NonBinaryTree) DepthFirstFind(v int) *NonBynaryNode {
 	return findRecursiveNonBy(t.Root, v)
 }
+
+func insertBinary(n *BinaryNode, target int, v int) bool {
+	if n == nil {
+		return false
+	}
+	if n.Value == target {
+		if n.Left == nil {
+			n.Left = &BinaryNode{Value: v, Left: nil, Right: nil}
+			return true
+		} else if n.Right == nil {
+			n.Right = &BinaryNode{Value: v, Left: nil, Right: nil}
+			return true
+		} else {
+			return false
+		}
+	}
+	leftRes := insertBinary(n.Left, target, v)
+	if leftRes {
+		return true
+	}
+	return insertBinary(n.Right, target, v)
+}
+
+func (t *Tree) Insert(target int, v int) bool {
+	return insertBinary(t.Root, target, v)
+}
